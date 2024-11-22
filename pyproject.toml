@@ -63,6 +63,7 @@ dependencies = [
 "Changelog" = "https://github.com/qt3uw/qt3utils/releases"
 
 [project.scripts]
+qdlhome = "qdlutils.applications.qdlhome.main:main"
 qdlmove = "qdlutils.applications.qdlmove.main:main"
 qdlple = "qdlutils.applications.qdlple.main:main"
 qdlscan = "qdlutils.applications.qdlscan.main:main"

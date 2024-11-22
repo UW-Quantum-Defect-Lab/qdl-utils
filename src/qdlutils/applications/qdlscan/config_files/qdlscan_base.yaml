@@ -62,4 +62,4 @@ QDLSCAN:
       zero_microns_volt_offset: 5
       min_position: -40.0
       max_position: 40.0
-      invert_axis: True
+      invert_axis: False
