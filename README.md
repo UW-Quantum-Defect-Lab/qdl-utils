@@ -39,12 +39,13 @@ and hardware interfaces can be utilized directly without the development of a GU
 or application.
 
 ### Intended usage
-Currently this repository is still under development to add generic, widely used
-functionality.
-Once these features have been added, this repository will no longer be in active 
-development.
-Instead, users are expected to fork from this repository and actively maintain their forks
-with their own applications and hardware.
+With the release of `v1.0.0` we are no longer actively developing features for the main 
+`qdlutils` repository.
+Bug fixes and modifications to existing applications may still be developed and pushed as 
+needed, however large changes will not be actively developed (unless there is significant
+need for such a feature).
+Instead, users are expected to fork this repository and maintain/actively develop their
+forks as needed for their own purposes.
 In the event that specific features, changes, or bug fixes are of generic interest to multiple 
 users, this repository may be merged/updated via a Pull Request.
 
@@ -239,9 +240,34 @@ In most cases this can be accomplished by some simple modificiation of the GUI a
 classes (simply copying functions from other applications should suffice).
 Users may then create new YAML configuration files and save them in the `config_files` folder.
 
+Additionally, users may find it convenient to modify the default settings for various GUI
+elements within the applications (e.g. the scan range in `qdlscan`).
+To do so, one should navigate to the `qdlapp/application_gui.py` script file and locate the
+relevant GUI element, for example, to change the scan range in `qdlscan` one finds the lines
+
+```
+# in qdlscan/application_gui.py
+tk.Label(scan_frame, text='Range (μm)').grid(row=row, column=0, padx=5, pady=2)
+self.image_range_entry = tk.Entry(scan_frame, width=10)
+self.image_range_entry.insert(0, 80)
+self.image_range_entry.grid(row=row, column=1, padx=5, pady=2)
+```
+
+and then modify the line `self.image_range_entry.insert(0, 80)` changing the last argument from
+`80` to whatever the desired value is.
+A similar process can be achieved in all applications as desired.
+
 
 ## Using the software
-Most applications can be run directly from the terminal via commands installed with `qdlutils`.
+If one intends to use multiple applications simultaneously it is recommended to run the applications
+through the `qdlhome` application.
+You can launch `qdlhome` via the `qdlutils` terminal command `qdlhome` or by navigating to 
+`qdlutils/applications/qdlhome/main.py` and running it directly.
+Note that `qdlhome` does not support the `qt3utils` legacy applications (although it would be possible
+to set this up if desired).
+
+Otherwise, single applications can be run directly from the terminal via commands installed with 
+`qdlutils`.
 The currently supported commands are:
 
 ```
